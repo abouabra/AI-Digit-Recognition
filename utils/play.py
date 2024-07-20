@@ -1,6 +1,5 @@
 
 import numpy as np
-import os
 import torch
 from torch import nn
 
@@ -45,7 +44,7 @@ class ImageClassifier(nn.Module):
         return x
 
 # Load the model
-model_name = "MNIST_CUDA_MODEL.pt"
+model_name = "MNIST_CPU_MODEL.pt"
 model = ImageClassifier()
 model.load_state_dict(torch.load(model_name, map_location=torch.device('cpu')))
 
@@ -78,13 +77,16 @@ def evaluate(numpy_img):
         print("Error occurred:", e)  # Catch and print any errors
 
 
+
+
+
+
 from PIL import Image
-# Load the image from file then convert to numpy array and resize to 28x28
-img_path = "test_img.jpg"
+img_path = "example_3.png"
 img = Image.open(img_path).convert('L').resize((28, 28))
 img = np.array(img)
 print("Image shape:", img.shape)
 
 results = evaluate(img)
-print("Probabilities:", results)
 
+print("model choice:", np.argmax(results))
