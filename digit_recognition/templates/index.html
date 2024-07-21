@@ -1,10 +1,58 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Digit Recognition</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <h1>Digit Recognition</h1>
+	<head>
+		<title>AI Digit Recognition</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+		<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	</head>
+	<body>
+		<div class="page_container">
+			<div class="page_header">
+				<h1>AI Digit Recognition</h1>
+				<p>Draw a single digit in the canvas below and see the AI's prediction.</p>
+			</div>
+			<div class="page_body_container">
+				<div class="page_body_left">
+					{% csrf_token %}
+					<canvas id="drawing_canvas"></canvas>
+					<svg id="canvas_btn" class="canvas_btn" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110.61 122.88">
+						<path
+							fill="rgb(236, 51, 51)"
+							d="M39.27,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Zm63.6-19.86L98,103a22.29,22.29,0,0,1-6.33,14.1,19.41,19.41,0,0,1-13.88,5.78h-45a19.4,19.4,0,0,1-13.86-5.78l0,0A22.31,22.31,0,0,1,12.59,103L7.74,38.78H0V25c0-3.32,1.63-4.58,4.84-4.58H27.58V10.79A10.82,10.82,0,0,1,38.37,0H72.24A10.82,10.82,0,0,1,83,10.79v9.62h23.35a6.19,6.19,0,0,1,1,.06A3.86,3.86,0,0,1,110.59,24c0,.2,0,.38,0,.57V38.78Zm-9.5.17H17.24L22,102.3a12.82,12.82,0,0,0,3.57,8.1l0,0a10,10,0,0,0,7.19,3h45a10.06,10.06,0,0,0,7.19-3,12.8,12.8,0,0,0,3.59-8.1L93.37,39ZM71,20.41V12.05H39.64v8.36ZM61.87,58.64a4.74,4.74,0,1,1,9.47,0V93.72a4.74,4.74,0,1,1-9.47,0V58.64Z"
+						/>
+					</svg>
+				</div>
+
+				<div class="page_body_right">
+					<div class="prediction_result">
+						<span id="prediction_result">Prediction: - | Accuracy: -</span>
+					</div>
+
+					{% for i in "0123456789" %}
+					<div class="prediction_item">
+						<span>{{i}}: </span>
+						<div class="progress_bar_parrent">
+							<div class="progress_bar_wrap" id="prediction_progress_{{i}}" style="width: 100%">
+								<div class="progress_bar_child" id="prediction_text_{{i}}">100%</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="footer_paragraphs">
+				<p>
+                    This project involves the development of a digit recognition AI utilizing the MNIST dataset. The model is built using a Convolutional Neural Network (CNN) implemented with the PyTorch library. Training is conducted on the Google Colab platform, leveraging its free computational resources. The trained model is then deployed as a REST API within this application using the Django framework, enabling easy interaction and integration. This setup demonstrates the practical application of deep learning and web development to solve real-world problems in image classification.
+				</p>
+				<p>The Project is developed by <a class="profile_link" href="https://github.com/abouabra">Ayman Bouabra</a></p>
+			</div>
+		</div>
+		<script src="{% static 'js/drawing.js' %}"></script>
+	</body>
 </html>

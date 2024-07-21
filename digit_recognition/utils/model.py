@@ -44,9 +44,11 @@ class ImageClassifier(nn.Module):
         return x
 
 # Load the model
-model_name = "MNIST_CPU_MODEL.pt"
+import os
+
+path = os.path.join("digit_recognition/utils", "MNIST_CPU_MODEL.pt")
 model = ImageClassifier()
-model.load_state_dict(torch.load(model_name, map_location=torch.device('cpu')))
+model.load_state_dict(torch.load(path, map_location=torch.device('cpu')))
 
 
 # Function to calculate softmax
@@ -56,7 +58,8 @@ def softmax(x):
 
 def evaluate(numpy_img):
     try:
-        # Load the image
+
+        # Convert image to PyTorch tensor
         img = torch.from_numpy(numpy_img)
 
         # Add batch dimension and normalize
@@ -81,12 +84,12 @@ def evaluate(numpy_img):
 
 
 
-from PIL import Image
-img_path = "example_3.png"
-img = Image.open(img_path).convert('L').resize((28, 28))
-img = np.array(img)
-print("Image shape:", img.shape)
+# from PIL import Image
+# img_path = "example_3.png"
+# img = Image.open(img_path).convert('L').resize((28, 28))
+# img = np.array(img)
+# print("Image shape:", img.shape)
 
-results = evaluate(img)
+# results = evaluate(img)
 
-print("model choice:", np.argmax(results))
+# print("model choice:", np.argmax(results))
