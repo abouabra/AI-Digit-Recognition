@@ -1,5 +1,6 @@
 # AI Digit Recognition
-![Demonstration]("https://github.com/abouabra/AI-Digit-Recognition/blob/main/assets/demonstration.gif")
+
+![Demonstration](https://raw.githubusercontent.com/abouabra/AI-Digit-Recognition/refs/heads/master/assets/demonstration.gif?token=GHSAT0AAAAAACVDBHKKEEIENRLN65RX4L4QZYBRALQ)
 
 ## Description
 
