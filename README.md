@@ -1,5 +1,5 @@
 # AI Digit Recognition
-<!-- [![AI Digit Recognition](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID) -->
+![Demonstration]("https://github.com/abouabra/AI-Digit-Recognition/blob/main/assets/demonstration.gif")
 
 ## Description
 
